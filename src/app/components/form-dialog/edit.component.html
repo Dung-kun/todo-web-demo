@@ -1,0 +1,36 @@
+  <h1 mat-dialog-title> {{ data.key }}</h1>
+  <div mat-dialog-content>
+    <form
+    [formGroup]="mutiForm"
+    >
+      <div>
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput  placeholder="title" formControlName="title"/>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Author</mat-label>
+            <input matInput  placeholder="author" formControlName="author"/>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="description" formControlName="description"/>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+              <mat-option value="In process">In process</mat-option>
+              <mat-option value="Done">Done</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="closeDialog()">Cancel</button>
+    <button mat-raised-button [disabled]="mutiForm.invalid" (click)="transData()">Ok</button>
+  </div>
+

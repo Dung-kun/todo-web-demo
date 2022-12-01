@@ -1,0 +1,16 @@
+<div class="container">
+  <ng-container *ngIf="user$ | async as user">
+    <h1>
+      {{ user.name}}'s Task
+    </h1>
+    <p>
+      Name: {{ user?.name}}
+    <p>
+      Position: {{user?.position}}
+    </p>
+  </ng-container>
+  <!-- <app-task-list
+    [idUser] = "idUser"
+  ></app-task-list> -->
+  <button class="btn-design" (click)="returnHome()">Quay lại home</button>
+</div>

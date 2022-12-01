@@ -1,0 +1,17 @@
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - staging
+
+pages:
+  image: node:latest
+  stage: staging
+  script:
+    - npm install -g @angular/cli@13.3.0
+    - npm install
+    - ng build --prod
+  artifacts:
+    paths:
+    - public

@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Task Manager</h1>
+  <button class="btn-design btn-add" style="margin-bottom: 30px;" (click)="openDialogToAddUser()">Thêm Task</button>
+  <div style="overflow-x:auto;">
+  <table id="customers">
+    <thead>
+      <td></td>
+      <td>Task Name</td>
+      <td>Author</td>
+      <td>Description</td>
+      <td>Status</td>
+      <td>Action</td>
+    </thead>
+    <tr *ngFor="let task of tasks; let idx='index'" >
+      <td>{{ idx + 1 }}</td>
+      <td>{{task?.title}}</td>
+      <td>{{task?.author}}</td>
+      <td>{{task?.description}}</td>
+      <td>{{task?.status}}</td>
+      <td style="width: 20%">
+        <button type="button" class="btn-design btn-add" (click)="openDialogToEditUser(task)">Edit</button>
+        <br/>
+        <br/>
+        <button type="button" class="btn-design btn-add" (click)="deleteTask(task.id, idx)">Delete</button>
+      </td>
+    </tr>
+  </table>
+  </div>
+</div>
