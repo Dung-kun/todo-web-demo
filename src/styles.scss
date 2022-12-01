@@ -36,7 +36,7 @@ $todo-web-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 @font-face {
   font-family: fontOfMe;
-  src: url("/assets/fonts/mario.ttf") format("truetype");
+  src: url("https://dung-kun.github.io/todo-web-demo/assets/fonts/mario.ttf") format("truetype");
 }
 body {
   width: 100%;
