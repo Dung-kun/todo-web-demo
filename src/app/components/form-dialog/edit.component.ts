@@ -50,7 +50,7 @@ export class EditComponent implements OnInit {
   }
 
   closeDialog() {
-    this.dialogRef.close({});
+    this.dialogRef.close("none");
     this.moveOriginal();
   }
 

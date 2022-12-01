@@ -4,6 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { EditComponent } from '../form-dialog/edit.component';
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
+import { of } from 'rxjs';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -34,6 +35,9 @@ export class TodoListComponent implements OnInit {
         .afterClosed()
         .pipe(
           switchMap((val) => {
+            if(val == "none") {
+              return of("none");
+            }
             let taskTemp = new Task();
 
             taskTemp = {
@@ -45,7 +49,7 @@ export class TodoListComponent implements OnInit {
           })
         )
         .subscribe((val) => {
-          if(val) {
+          if(val !="none") {
             this.tasks.push(val as Task);
           }
         });
@@ -55,14 +59,15 @@ export class TodoListComponent implements OnInit {
         .afterClosed()
         .pipe(
           switchMap((val) => {
-            if(val) {
-              val.id = this.idEdited
+            if(val == "none") {
+              return of("none");
             }
+            val.id = this.idEdited
             return this.service.updateTask(val);
           })
         )
         .subscribe((value) => {
-          if(value) {
+          if(value != "none") {
             let index = this.tasks.findIndex((val) => val.id == this.idEdited);
             this.tasks.splice(index, 1, value as Task);
           }

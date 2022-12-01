@@ -40,9 +40,9 @@ export class TaskService {
     );
   }
 
-  addTask(task: Task): Observable<Task | string> {
-    if (!task) {
-      return of('');
+  addTask(task: Task): Observable<Task> {
+    if (task.title == "" || task.author == "") {
+      return of();
     }
     return this.http.post<Task>(this.url, task).pipe(
       catchError((err) => {
@@ -52,9 +52,9 @@ export class TaskService {
     );
   }
 
-  updateTask(task: Task): Observable<Task | string> {
+  updateTask(task: Task): Observable<Task> {
     if (!task) {
-      return of('');
+      return of();
     }
     return this.http.patch<Task>(this.url, task).pipe(
       catchError((err) => {
